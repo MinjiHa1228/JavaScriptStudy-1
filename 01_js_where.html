@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <!-- 
+     자바스크립트 코딩위치
+     1.inline 방식:tag 내에 event 속성에 직접코딩
+     2.internal방식(선언적방식): head 사이에 선언
+     3.External방식(외부파일)
+    -->
+
+    <!-- 2.선언적 방식 -->
+    <script>
+        //함수선언
+        function hello() 
+        {
+            window.alert("저도 반갑습니다!!");
+        }//end:hello()
+        
+    </script>
+    <!-- 3.External방식(외부파일) -->
+     <script src="./js/myscript.js"></script>
+    
+
+</head>
+
+<body>
+    <!--1. javascrip inline 방식 -->
+    <button onclick="javascript:window.alert('자바스크립트에 오신걸 환영합니다')"> 환영합니다</button>
+
+    <!--2. javascrip interline 방식 -->
+    <button onclick="javascript:hello()">반갑습니다</button>
+
+    <button onclick="hi();">또 만나유</button>
+
+</body>
+
+</html>

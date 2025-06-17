@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        function add() {
+
+            //수1과 /수2의 값을
+          
+            let su1 = document.getElementById('su1').value;
+            let su2 = document.getElementById('su2').value;
+            //문자열//숫자로변환하는 함수
+            // parseInt("123") ->123
+
+            // 계산하기
+            let result = parseInt(su1) + parseInt(su2)
+            // 결과창에 넣는다
+            document.getElementById("result").value = result;
+        }
+        function minus() {
+
+            //수1과 /수2의 값을
+          
+            let su1 = document.getElementById('su1').value;
+            let su2 = document.getElementById('su2').value;
+            //문자열//숫자로변환하는 함수
+            // parseInt("123") ->123
+
+            // 계산하기
+            let result = parseInt(su1) - parseInt(su2) //문자를 숫자로 바꿔주는 기능
+            // 결과창에 넣는다
+            document.getElementById("result").value = result;
+        }
+        function multiply() {
+
+            //수1과 /수2의 값을
+          
+            let su1 = document.getElementById('su1').value;
+            let su2 = document.getElementById('su2').value;
+            //문자열//숫자로변환하는 함수
+            // parseInt("123") ->123
+
+            // 계산하기
+            let result = parseInt(su1) * parseInt(su2) //문자를 숫자로 바꿔주는 기능
+            // 결과창에 넣는다
+            document.getElementById("result").value = result;
+        }
+        function devide() {
+
+            //수1과 /수2의 값을
+          
+            let su1 = document.getElementById('su1').value;
+            let su2 = document.getElementById('su2').value;
+            //문자열//숫자로변환하는 함수
+            // parseInt("123") ->123
+
+            // 계산하기
+            let result = parseInt(su1) / parseInt(su2) //문자를 숫자로 바꿔주는 기능
+            // 결과창에 넣는다
+            document.getElementById("result").value = result;
+        }
+        function devide() {
+
+            //수1과 /수2의 값을
+          
+            let su1 = document.getElementById('su1').value;
+            let su2 = document.getElementById('su2').value;
+            //문자열//숫자로변환하는 함수
+            // parseInt("123") ->123
+
+            // 계산하기
+            let result = parseInt(su1) / parseInt(su2) //문자를 숫자로 바꿔주는 기능
+            // 결과창에 넣는다
+            document.getElementById("result").value = result;
+        }
+        function remain() {
+
+            //수1과 /수2의 값을
+          
+            let su1 = document.getElementById('su1').value;
+            let su2 = document.getElementById('su2').value;
+            //문자열//숫자로변환하는 함수
+            // parseInt("123") ->123
+
+            // 계산하기
+            let result = parseInt(su1) % parseInt(su2) //문자를 숫자로 바꿔주는 기능
+            // 결과창에 넣는다
+            document.getElementById("result").value = result;
+        }
+        function exponentiation() {
+
+            //수1과 /수2의 값을
+          
+            let su1 = document.getElementById('su1').value;
+            let su2 = document.getElementById('su2').value;
+            //문자열//숫자로변환하는 함수
+            // parseInt("123") ->123
+
+            // 계산하기
+            let result = parseInt(su1) ** parseInt(su2) //문자를 숫자로 바꿔주는 기능
+            // 결과창에 넣는다
+            document.getElementById("result").value = result;
+        }
+
+    </script>
+</head>
+
+<body>
+
+    <!-- 1 line -->
+    <div>
+        <label for="">수1</label>
+        <input id="su1">
+    </div>
+    <!-- 2 line -->
+    <div>
+        <label for="">수2</label>
+        <input id="su2">
+    </div>
+    <!-- 3 line -->
+    <div>
+        <button onclick="add();">더하기</button>
+        <button onclick="minus();">빼기</button>
+        <button onclick="multiply();">곱하기</button>
+        <button onclick="devide();">나누기</button>
+        <button onclick="remain();">나머지</button>
+        <button onclick="exponentiation();">제곱승</button>
+        <!--4 line -->
+        <div>
+            <label for="">결과</label>
+            <input id="result">
+
+        </div>
+
+
+
+
+</body>
+
+</html>

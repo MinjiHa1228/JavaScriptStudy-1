@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+
+        <script>
+
+                function test_var() {
+                        a = 10;
+                        var a;  // hoisting (사용하는 변수를 미리 상위에 생성 - 선언하지 않더라도 프로그램이 계산하여 상위단으로 올려준다)
+
+                        a = "안녕";
+
+                        console.log("hoisting 된 a :", a);
+
+                        //alert(a) ;
+
+                }
+
+                function test_let() {
+                        //변수
+
+                        if(true
+
+                        )
+                        {
+                                //지역변수
+                        let local_a = 10;
+                        console.log("너는누구냐 : ", local_a);
+                        }
+
+                        local_a = 100;
+
+
+
+                        let b;
+                        b = 10;
+                        b = "즐"; // reassign(재할당 가능)
+
+                        console.log("hoisting 된 b :", b);
+
+                }
+                function test_const() {
+                        //상수 (항상 유지되는 값. 변하지 않음)
+                        const PI = 3.14;
+                        //PI = 3.141592;
+
+
+                }
+                //함수 호출
+                test_var();
+                test_let();
+                test_const();
+
+
+                a = 100;
+                console.log("외부로 나온 a:", a);
+
+                b = 1000;  // 상위것이 아니라 새로 만들어진 변수
+                console.log("외부로 나온 b:", b);
+
+
+        </script>
+
+
+
+
+</head>
+
+<body>
+
+</body>
+
+</html>

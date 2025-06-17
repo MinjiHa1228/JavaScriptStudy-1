@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function hello_kor(){
+            //Javascript DOM API
+            document.getElementById("msg").innerHTML = "안녕하세요!!";
+
+            //input 값넣기
+            document.getElementById("msg2").value = "안녕하세요!!";
+        }
+
+        function hello_eng(){
+            //Javascript DOM API
+            document.getElementById("msg").innerHTML = "Hi Everyone!!";
+
+            //input 값넣기
+            document.getElementById("msg2").value = "Hi Everyone!!";   
+        }
+
+
+        function hello_jpn(){
+
+            //Debug 사용시
+            console.log("call hello_jpn()");
+
+            //Javascript DOM API
+            document.getElementById("msg").innerHTML = "일본어 인사는?";
+
+            //input 값넣기
+            document.getElementById("msg2").value = "오겡끼데스까!!";
+        }
+        function write1(){
+            document.write("document를 이용해서 출력해봐!!");
+        }
+
+    </script>
+</head>
+<body>
+    <p id="msg">여기에 인사말 출력해보기</p>
+    <input id="msg2" value="여기도 메시지 넣어줘"><br>
+    <button onclick="hello_kor();">한국어</button>
+    <button onclick="hello_eng();">영어</button>
+    <button onclick="hello_jpn();">일본어</button>
+
+    <button onclick="write1()">document.write():body 부분에 출력</button>
+</body>
+</html>
