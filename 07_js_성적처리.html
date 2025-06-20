@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    const regular_jumsu = /^[0-9]{1,3}$/;
+
+    function fn_result() {
+        // 입력된 성적 읽어오기
+        let kor = document.getElementById("kor").value;
+        let grade = "F";
+
+        //유효성체크(정규식 + 일반논리)
+        if(regular_jumsu.test(kor)== false|| kor<0 || kor>100) {
+
+            alert("점수는 0~100사이만 입력하세요!!");
+            return;
+        }
+
+        //등급계산
+        if(kor >= 90 && kor <= 100) grade = "A";
+        if(kor >= 80 && kor < 90) grade = "B";
+        if(kor >= 70 && kor < 80) grade = "C";
+        if(kor >= 60 && kor < 70) grade = "D";
+
+
+        // 결과출력
+        let result_msg = `점수 : ${kor}  등급 : ${grade}`;
+        document.getElementById("result").innerHTML = result_msg;
+
+    }
+
+</script>
+<body>
+
+    국어:<input id="kor">
+    <input type=" button" value="평점보기" onclick=" fn_result();">
+    영어:<input id="Eng">
+    
+    <hr>
+    <div id="result"></div>
+</body>
+
+</html>

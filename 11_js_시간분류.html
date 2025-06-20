@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    //식별자 대, 소문자 가림
+    //상수(Constant) : 변하지 않는수
+    const MINUTE = 60;
+    const HOUR = 60 * MINUTE;  //3600
+    const DAY = 24 * HOUR;    //86400
+
+
+
+    function fn_result() {
+
+        let = total_second = document.getElementById("total_second").value;
+        // total_second = 88600 
+        let day = Math.floor(total_second / DAY);// 소숫점 제거 Math.floor(1.687) -> 1
+        //          88600%86400 ->2200
+        total_second = total_second % DAY;
+        //          2200/3600
+        let hour = Math.floor(total_second / HOUR);
+        //          2200%3600 ->
+        total_second = total_second % HOUR
+        //          2200/60->36
+        let minute = Math.floor(total_second / MINUTE);
+
+        let second = total_second % MINUTE
+        //결과출력
+        document.getElementById("result_day").innerHTML = day;
+        document.getElementById("result_hour").innerHTML = hour;
+        document.getElementById("result_minute").innerHTML = minute;
+        document.getElementById("result_second").innerHTML = second;
+
+    }
+
+</script>
+
+<body>
+    전체시간(초) : <input id="total_second">
+    <button onclick="fn_result();">계산하기</button>
+    <hr>
+    <table border="1" width="300">
+    <tr>
+        <th>일</th>
+        <td><span id="result_day"></span></td>
+    </tr>
+    <tr>
+        <th>시간</th>
+        <td><span id="result_hour"></span></td>
+    </tr>
+    <tr>
+        <th>분</th>
+        <td><span id="result_minute"></span></td>
+    </tr>
+    <tr>
+        <th>초</th>
+        <td><span id="result_second"></span></td>
+    </tr>
+    </table>
+</body>
+
+</html>

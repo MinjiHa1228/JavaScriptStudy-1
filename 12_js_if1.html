@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        function fn_result() {
+
+
+            let age = document.getElementById("age").value;
+
+            let result = "";
+
+            //0~9 영유아
+            if (age >= 0 && age < 10) {
+                result = `${age} 세 영유아 입니다`;
+
+            } else if (age >= 10 && age < 20) {
+                result = `${age} 세 10대 입니다 입니다`;
+
+            } else if (age >= 20 && age < 30) {
+                result = `${age} 세! 20대 입니다. 좋을 때 입니다`;
+
+            } else if (Math.floor(age / 10) == 3) {
+                result = `${age} 세! 30대 입니다. 꺾였습니다 `;
+
+            } else if (Math.floor(age / 10) == 4) {
+                result = `${age} 세! 40대 입니다. 불혹이군요 `;
+
+            } else if (age >= 50 && age < 60) {
+                result = `${age} 세! 50대 입니다. 반백살이네요`;
+
+            }
+
+
+
+
+
+            //결과출력
+            document.getElementById("result").innerHTML = result;
+
+        } 
+    </script>
+</head>
+
+<body>
+
+    나이 : <input id="age">
+    <button onclick="fn_result()">결과보기</button>
+
+    <hr>
+    <div id="result"></div>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        const regular_year = /^[0-9]{1,4}$/;
+
+        function fn_result(){
+
+            //1.입력한 년도 얻어오기
+            let year = document.getElementById("year").value;
+            //2.유효성(년도 1~4자리 숫자)
+            // if(!regular_year.test(year)){
+            if(regular_year.test(year)==false){
+               alert("1~4자리 숫자만 입력하세요!");
+               document.getElementById("year").value="";//지우기
+               document.getElementById("year").focus(); //포커스
+               return;
+            }
+
+            //3.윤년판단
+            //조건1) 400년마다 윤년 (year%400==0)
+            //조건2) 4의배수(year%4==0)이면서 100의 배수가 아닌(year%100 != 0) 해
+            let result=`${year}년도는 평년입니다`;
+            // let 조건1 = year%400==0 ;
+            // let 조건2 = (year%4==0 && year%100 != 0);
+            // if( 조건1 || 조건2) {}
+            
+            if( year%400==0 || (year%4==0 && year%100 != 0) ){
+                 result=`${year}년도는 윤년입니다`;
+            }
+
+            //4.결과출력
+            document.getElementById("result").innerHTML = result;
+
+        }
+    </script>
+</head>
+<body>
+    년도:<input id="year">
+        <input type="button" value="결과보기" onclick="fn_result();">
+    <hr>
+    <div id="result"></div>    
+</body>
+</html>

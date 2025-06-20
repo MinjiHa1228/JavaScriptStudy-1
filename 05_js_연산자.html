@@ -45,44 +45,193 @@
             document.write(`n /= 5 : ${n}<br>`);
 
             n = 5;
-            n **= 2; // n = n /** 2 ;
+            n **= 2;  // n = n ** 2 ;
             document.write(`n **= 2 : ${n}<br>`);
 
-            n = 5;
-            n %= 2; // n = n % 2 ; (25를 2로 나눔)
+            n %= 2;  // n = n % 2 ;
             document.write(`n %= 2 : ${n}<br>`);
-
-
         }
 
         function 관계연산자() {
+            //관계연산자 : >  >=  <  <=  
+            //           ==   !=  (값 == 값)
+            //           ===  ==! (값+타입==값+타입)
 
-            // 관계연산자(비교연산자) : >  >=  <  <=  ==  !=  ===  ==!
-            //                       ==  !=  (값 == 값)
-            //                       === ==! (값+타입== 값+타입)
-
-            let a = 3;  //Number type
+            let a = 3;    //Number
             let b = 2;
-            let c = "3"; // String type(값만 비교)
-            
+            let c = "3";  //String
+
             document.write("<h3>관계연산자</h3>");
             document.write("<pre>");
-            document.write(`${a} > ${b} : ${a > b} <br>`);
-            document.write(`${a} >= ${b} : ${a >= b} <br>`);
-            document.write(`${a} <= ${b} : ${a <= b} <br>`);
-            document.write(`${a} == ${b} : ${a == b} <br>`);
-            document.write(`${a} != ${b} : ${a != b} <br>`); // 같지 않음 -> 그러니깐 true
-            document.write(`${a} === ${b} : ${a === b} <br>`);
-            document.write(`${a} ==! ${b} : ${a ==! b} <br>`);
-            document.write(`${a} == ${c} : ${a == c} <br>`);
-            document.write(`${a} === ${c} : ${a === c} <br>`);
-            document.write(`${a} !== ${c} : ${a !== c} <br>`);
-            document.write("<pre>");
+            document.write(`${a} >  ${b} : ${a > b}<br>`);
+            document.write(`${a} >= ${b} : ${a >= b}<br>`);
+            document.write(`${a} <  ${b} : ${a < b}<br>`);
+            document.write(`${a} <= ${b} : ${a <= b}<br>`);
+            document.write(`${a} == ${b} : ${a == b}<br>`);
+            document.write(`${a} != ${b} : ${a != b}<br>`);
+
+            document.write(`${a} == ${c} : ${a == c}<br>`);
+
+            document.write(`${a} === ${c} : ${a === c}<br>`);
+            document.write(`${a} !== ${c} : ${a !== c}<br>`);
+
+            document.write("</pre>");
         }
 
-        산술연산자();
-        대입연산자();
-        관계연산자();
+        function 단항연산자() {
+
+
+            //단항연산자(unary) : !  ~  ++  --  -(부호)
+
+            document.write("<h3>단항연산자</h3>");
+            // ! : 일반논리 Not
+            let a = 3;
+            let b = 2;
+            let bResult = !(a > b);
+
+            document.write(`!(${a} > ${b}) : ${bResult}<br>`);
+            document.write(`!true  : ${!true}<br>`)
+            document.write(`!false : ${!false}<br>`)
+
+            //증감연산자: ++  --
+            // 후위형  :  변수++
+            // 전위형  :  ++변수
+            let n = 10;
+            document.write(`n=${n}<br>`);
+            n++;  // n = n + 1  자신의 값을 1 증가
+            document.write(`n++한 후의 n=${n}<br>`);
+            n--;  // n = n - 1  자신의 값을 1 감소
+            document.write(`n--한 후의 n=${n}<br>`);
+
+            //전위형:다른 연산자보다 우선연산
+            let m = ++n + 10; //1) ++n  2) n+10 3) m = 21
+
+
+            //후위형 : 모든연산이 완료후에 제일 마지막에 연산
+            n = 10;
+            m = n++ + 10; //1)n+10 2)m=20 3)n++
+
+            //부호 연산자(음수표시)
+            n = -100;
+            m = n;
+            if (n < 0)
+                m = -n;
+            document.write(`|${n}| = ${m}<br>`);
+
+            // ~ (tilde): 이진논리 Not 연산자
+            //            0->1
+            //            1->0      
+            n = 10;
+            m = n.toString(2);
+            document.write(`${n}'s 2진수 : ${m} <br>`);
+            document.write(`~${n}'s 값 : ${~n} <br>`);
+            //         n = 1010
+            //        ~n = 0101 
+
+            // ???? 확인해서.....              
+            n = 10;
+            m = ~n;
+            document.write(toBinary(n) + "<br>");
+            document.write(toBinary(~n) + "<br>");
+            document.write(toBinary(-1) + "<br>");
+        }
+
+        function toBinary(n) {
+            let binary = "";
+
+            for (i = 31; i >= 0; i--) {
+                binary += (n >>> i & 1) + '';
+            }
+            return binary;
+        }
+
+
+
+        function 일반논리연산자() {
+            //일반논리연산자 : && ||
+            //              A && B : A 와 B 모두 참이어야 참
+            //              A || B : A 도는 B
+            document.write("<h3>일반논리연산자</h3>");
+
+
+            document.write(`true && true : ${true && true}<br>`);
+            document.write(`true && false : ${true && false}<br>`);
+
+            document.write(` <br> `);
+
+            document.write(`true && true : ${true || true}<br>`);
+            document.write(`true && false : ${true || false}<br>`);
+            document.write(`false && false : ${false || false}<br>`);
+        }
+
+        function 삼항연산자() {
+            //삼항연산자
+            //(조건) ? 값(참) : 값(거짓)
+
+            // 두 수 중에 큰수 구하기
+            let a = 10;
+            let b = 5;
+            let result;
+
+            result = (a > b) ? a : b  //
+
+            document.write(`${a} as ${b}중 더 큰수는 ${result}입니다<br>`)
+
+            //절대값 구하기
+            let x = -100;
+            let y;
+
+            y = (x < 0) ? -x : x
+            document.write(`|${x}| = ${y} <br>`);
+
+            //3항연산자 ->if else 문과 동일
+            if (x < 0)
+                y = -x; //조건이 참일 때 수행
+
+            else
+                y = x; //조건이 거짓일 때 수행
+            
+            //short Circuit Evaluation (경제적 연산)
+           // && (AND), || (OR) 연산자가 왼쪽 값만으로 전체 결과가 결정될 수 있을 때, 
+            // 오른쪽 연산을 하지 않는 것입니다.
+            let xx = 1;
+            let yy = 2;
+            let bResult;
+
+            bResult = ++xx >0 || ++yy > 0;
+
+            //xx =0 yy =2 bResult = false    
+
+             document.write(`xx = ${xx} yy=${yy}  bSesult = ${bResult}<br>`);
+
+            
+            bResult = ++xx >0 || ++yy > 0;
+            // xx = 1   yy = 3  bResult = false
+            // xx = 1   yy = 2  bResult = false
+
+            document.write(`xx = ${xx} yy=${yy}  bSesult = ${bResult}<br>`);
+            
+
+
+
+
+
+
+
+            bResult = --xx > 0 && ++yy > 0;
+
+
+
+
+
+        }
+
+        // 산술연산자();
+        // 대입연산자();
+        // 관계연산자();
+        // 단항연산자();
+        // 일반논리연산자();
+        삼항연산자();
 
     </script>
 

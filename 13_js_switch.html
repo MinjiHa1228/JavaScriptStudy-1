@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+         //입력박스를 통해서 입력한다
+         let weekday = window.prompt("요일(0:일 1:월 2:화 3:수 4:목 5:금 6:토)<=해당요일번호를 선택하세요");
+
+         let my_job= "뭐하지?";
+
+         //break : 탈출문(switch /반복문(for,while))
+
+         if( !(weekday>=0 && weekday<=6 )){
+
+            alert("0~6사이값만 입력하세요");
+            
+         }else{
+
+            switch(parseInt(weekday))
+            {
+                case 1: my_job = "애국조회!!"; break;
+                case 2: 
+                case 3: 
+                case 4: 
+                case 5: my_job = "공부한다!!"; break;
+                default: my_job = "잠자기!!!"; 
+                // case 6: 
+                // case 0: my_job = "잠자기!!!"; break;
+            }
+            
+            //결과출력
+            document.write(`${ weekday } 요일에는 ${my_job}`);
+        }
+
+    </script>
+
+</head>
+<body>
+   
+</body>
+</html>
