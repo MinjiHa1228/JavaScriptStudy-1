@@ -19,23 +19,23 @@
               alert("점수는 0~100사이만 입력하세요!!");
               return;
            }
+           // 상수      숫자 (리터럴)
+           const PI = 3.14;
 
            //등급계산...
-           if(kor>=96 && kor<=100) grade = "A+";
-           else if(kor>=93 && kor<=95) grade = "A";
-           else if(kor>=90 && kor<=92) grade = "A-";
+           switch(parseInt(kor/10))
+           {                
+                // 상수 리터럴
+            case 10 :
+            case 9  : grade ="A"; break;
+            case 8  : grade ="B"; break;
+            case 7  : grade ="C"; break;
+            case 6  : grade ="D"; break;
+            default : grade ="F"; 
+    
 
-           else if(kor>=86 && kor< 90)  grade = "B+";
-           else if(kor>=83 && kor<=85) grade = "B";
-           else if(kor>=80 && kor<=82) grade = "B-";
+           }
 
-           else if(kor>=76 && kor< 80)  grade = "C+";
-           else if(kor>=73 && kor<=75) grade = "C";
-           else if(kor>=70 && kor<=72) grade = "C-";
-
-           else if(kor>=66 && kor< 70)  grade = "D+";
-           else if(kor>=63 && kor<=65) grade = "D";
-           else if(kor>=60 && kor<=62) grade = "D-";
 
            //결과 출력 
            let result_msg = `점수 : ${kor}  등급 : ${grade}`; 

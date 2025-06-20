@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            margin: 0;
+            font-size: 0;
+            border-radius: 15px;
+        }
+
+        span {
+            display: inline-block;
+            width: 30px;
+            height: 32px;
+            background-color: black;
+            color: gray;
+            text-align: center;
+            align-content: center;
+            font-size: 20px;
+            text-shadow: 1px 1px 1px white ;
+
+        }
+    </style>
+
+
+    <script>
+
+        //타이머
+        //setTimeout(함수명.시간): 1회성 함수/ 1회만 호출 된다.
+        setTimeout(timer_proc,0);
+
+        // setInterval(함수명.시간): 지속적으로 호출 한다.(시간 간격마다)
+        setInterval(timer_proc, 500);
+
+        let bColon = true
+
+        function timer_proc() {
+            //console.log("--timer_proc call--");
+        const today = new Date(); //현재 시스템 날짜 
+
+        // let hour = today.getHours(); //
+        let hour = 2; //
+        let minute = today.getMinutes();
+        let second = today.getSeconds();     
+        let am_pm1 ;
+        let remainder;
+        if(hour>12){
+            am_pm1 = "PM";
+            remainder=hour-12;
+        }else{
+            am_pm1 ="AM";
+            remainder=hour;
+        }
+        
+        //콜론 출력
+        bColon = !bColon; // Toggle 처리 : true <_> false
+        
+        let colons = document.getElementsByClassName("colon");
+        colons[0].style.color =bColon ? "white":"black";
+        colons[1].style.color =bColon ? "white":"black";
+
+        //시간출력
+        document.getElementById("hour").innerHTML=(remainder<10) ? '0'+remainder:remainder;
+        document.getElementById("minute").innerHTML=(minute<10) ? '0'+minute:minute;
+        document.getElementById("second").innerHTML=(second<10) ? '0'+second:second;
+        document.getElementById("am_pm").innerHTML=(am_pm1)
+     
+         
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //    if(hour>12){
+        //      am_pm1="PM";
+        //      hour=hour-12;
+        // }else{
+        //     am_pm1="AM";
+        }
+
+
+        
+    </script>
+
+
+
+
+
+</head>
+
+<body>
+    <span id ="am_pm"></span>
+    <span id="hour">17</span><!--
+-->
+    <span class="colon">:</span>
+    <span id="minute">35</span>
+    <span class="colon">:</span>
+    <span id="second">15</span>
+
+ 
+
+
+
+</body>
+
+</html>
