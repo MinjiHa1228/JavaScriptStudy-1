@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        let sum = 0;//누적값을 저장할 변수
+        let i = 0;
+        while (i <= 10) {
+            sum += i; // sum = sum + i ;
+            i++
+        }
+        document.write(sum + "<br>");
+
+
+        // while 문은 반복횟수를 모를때 일반적으로 사용된다.
+        while (true) {
+
+            let dan = prompt("단:");
+            let result="";
+            for (let i = 1; i < 10; i++) {
+                result = result + `${dan} x ${i} = ${dan * i} \n`;
+            }
+
+            result += "계속하시겠습니까?";
+3
+           // console.log(result);
+            //취소(아니요) break (탈출문)
+            if (confirm(result) == false)break;
+
+        }
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

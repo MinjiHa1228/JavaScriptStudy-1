@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        /*
+            JSON (Javascript Object Notaion)
+            : 자바스크립트에서 객체를 표현하는 표기법
+            형식>
+                {name:value, name: value}
+                {key : value , key : value }
+        */
+
+
+        const person = {
+            "name": "일길동",
+            "age": 300,
+            "tel": "010-123-4567"
+        };
+        //Dot 표기법
+        let name = person.name;
+        //Square Bracket : [] 표기법
+        let age = person["age"]; //""
+        let tel = person['tel']; //''
+
+        document.write(`이름:${name}나이:${age}전화${tel}<br>`);
+        let married;
+        const person2 = {
+            "name": {
+                "fullName": "홍길동",
+                "familyName": "홍",
+                "givenName": "길동"
+            },
+            "age": 30,
+            "hobby":["낚시", "음주가무", "공중부양"],
+            "tel": {
+                "mobilePhone": "010-111-2222",
+                "homePhone": "02-111-2222"
+            },
+            "married": true
+
+        };
+        
+
+          
+        let hobby_list = "[취미]<br>";
+        //방법1
+        // for (let i = 0; i < person2.hobby.length; i++) { //i =0 1 2
+        //     hobby_list += `취미${i + 1} : ${person2.hobby[i]} <br>`;
+        // }
+
+        //방법2 : 해당배열의 첨자를 반환
+        // for( let i in person2.hobby){ // i =0 1 2
+        //     hobby_list += `취미${parseInt(i)+1} : ${person2.hobby[i]}<br> `;
+        // }
+
+        //방법3:for ~ of 해당배열의 요소를 반환
+        // "hobby" : ["낚시","음주가무","공중부양"]
+
+        let i = 1;
+        for(let h of person2.hobby){
+            hobby_list += `취미${i}  :  ${h}<br>`;
+            i ++ ;
+
+        }
+
+        let result = `
+                    전체이름:${person2.name.fullName}<br>
+                    성:${person2.name.familyName}<br>
+                    이름:${person2["name"]["givenName"]}<br>
+                    나이:${person2["age"]}(세)<br>
+                    전화번호:${person2["tel"]["homePhone"]}<br>
+                    ${hobby_list}
+                    결혼유무:${person2.married?"결혼함":"결혼안함"}
+                    `
+                                                           
+
+                
+       
+                    
+   
+       
+      
+               
+
+        document.write(result);
+
+
+        // // name=person2.name;
+        // document.write(`이름: ${ name }나이: ${ age }전화${ tel }
+        // 취미${hobby} 결혼유무${married}
+        // <br>`);
+    </script>
+
+
+</head>
+
+<body>
+
+</body>
+
+</html>

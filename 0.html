@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+    .star {
+      font-size: 40px;
+      color: gold;
+    }
+    .empty {
+      color: lightgray;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>⭐ 점수에 따라 별 표시 (동적 생성)</h2>
+  <div id="stars"></div>
+  <p id="score-text"></p>
+
+  <script>
+    const rating = 4.5; // 점수 입력 (0.5 단위 가능)
+    const starsContainer = document.getElementById("stars");
+    const scoreText = document.getElementById("score-text");
+
+    let fullStars = Math.floor(rating);      // 꽉 찬 별 개수
+    let hasHalfStar = rating % 1 >= 0.5;     // 반쪽 별 여부
+    let emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0); // 나머지 빈 별
+
+    // 꽉 찬 별 ★
+    for (let i = 0; i < fullStars; i++) {
+      starsContainer.innerHTML += `<span class="star">★</span>`;
+    }
+
+    // 반쪽 별 ⯨ 또는 ⭐ 반쪽 표시 텍스트 (간단하게 ☆ 써도 됨)
+    if (hasHalfStar) {
+      starsContainer.innerHTML += `<span class="star">⯨</span>`; // 반쪽 느낌
+    }
+
+    // 빈 별 ☆
+    for (let i = 0; i < emptyStars; i++) {
+      starsContainer.innerHTML += `<span class="star empty">★</span>`;
+    }
+
+    // 점수 표시
+    scoreText.innerText = `현재 점수: ${rating}점`;
+  </script>
+
+</body>
+</html>
+</head>
+<body>
+    
+</body>
+</html>

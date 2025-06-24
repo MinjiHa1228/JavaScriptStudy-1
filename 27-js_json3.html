@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!--Bootstrap3.X-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <style>
+        #box{
+            width: 400px;
+            text-align: center;
+            margin: auto;
+            margin-top: 50px;
+        }
+        th{
+            text-align: center;
+        }
+
+
+    </style>
+
+
+
+    <script>
+        //JSON Array
+        const person_array = [
+            { "name": "일제니", "age": 21, "tel": "010-010-0101" },//0
+            { "name": "이제니", "age": 22, "tel": "010-111-0101" },//1
+            { "name": "삼제니", "age": 23, "tel": "010-222-0101" },//2
+            { "name": "사제니", "age": 24, "tel": "010-333-0101" },//3
+            { "name": "오제니", "age": 25, "tel": "010-444-0101" } //4
+        ];
+
+
+        function fn_result() {
+
+            let html = `
+                <table class="table table-striped table-hover">
+            <tr class = "info">
+                <th>이름</th>
+                <th>나이</th>
+                <th>전화</th>
+            </tr>
+         
+`;
+            for (let i = 0; i < person_array.length; i++) {
+
+
+                const person = person_array[i];
+                html += `  
+                <tr>
+                    <td>${person.name}</td>
+                    <td>${person.age}</td>
+                    <td>${person.tel}</td>    
+                    </tr>
+                    `;
+            }
+
+            html = html + `</table>`
+
+            document.getElementById("result").innerHTML = html;
+
+        }//end:for
+
+
+
+
+
+        //결과출력
+
+
+
+
+
+    </script>
+
+
+</head>
+
+<body>
+
+    <div id="box">
+
+
+        <button class = "btn btn-primary" onclick="fn_result();">회원목록보기</button>
+        <hr>
+        <div id="result"></div>
+
+    </div>
+</body>
+
+</html>
