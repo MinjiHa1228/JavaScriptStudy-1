@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function fn_result(){
+
+            let year = document.getElementById("year").value;
+
+            //유효성 체크
+
+            // 띠구하기
+
+            // 4  5  6  7  8  9 10 11 0  1  2  3 <- year % 12(0~11)
+            // 자 축 인 묘 진 사 오 미 신 유 술 해
+
+
+                                // 0        1        2       3       4       5         6       7       8       9       10      11 <- index
+
+            const tti_array = ["원숭이띠", "닭띠", "개띠", "돼지띠", "쥐띠", "소띠", "호랑이띠", "토끼띠", "용띠", "뱀띠", "말띠", "양띠"];
+
+            let tti_index = year % 12; 
+
+            //10간
+            // 4  5  6  7  8   9   0   1  2  3 <- year % 10(0~9)
+            // 갑 을 병 정  무  기  경  신  임  계 
+            const gan_array = ["경", "신", "임", "계" ,"갑", "을", "병", "정", "무", "기"];
+
+            //12 지
+            // 4  5  6  7  8  9 10 11 0  1  2  3 <- year % 12(0~11)
+            // 자 축 인 묘 진 사 오 미 신 유 술 해
+            const ji_array = ["신", "유", "술", "해" ,"자", "축", "인", "묘", "진", "사", "오", "미"];
+
+
+
+
+
+            //결과 출력
+            let result = `[${year}]년은 ${tti_array[tti_index]} (띠)입니다.`;   
+            document.getElementById("result").innerHTML = result; //innerHTML은 HTML 태그를 포함할 수 있다  
+           
+           
+            let gan_index = year % 10; //10간
+
+            let ji_index = year % 12; //12지
+            
+            if(gan_index == 4 || gan_index == 5 )
+        {
+            document.getElementById("result").innerHTML=`[${year}]년은 <span style="color: blue;background-color: white;">
+                ${tti_array[tti_index]} </span>(띠)입니다.`;
+        }else if(gan_index == 6 || gan_index == 7)
+        {
+            document.getElementById("result").innerHTML=`[${year}]년은 <span style="color: red;background-color: white;">
+                ${tti_array[tti_index]} </span>(띠)입니다.`;
+        }else if(gan_index == 8 || gan_index == 9)
+        {
+            document.getElementById("result").innerHTML=`[${year}]년은 <span style="color: yellow;background-color: white;">
+                ${tti_array[tti_index]} </span>(띠)입니다.`;
+        }else if(gan_index == 10 || gan_index ==11)
+            document.getElementById("result").innerHTML=`[${year}]년은 <span style="color: yellow;background-color: white;">
+                ${tti_array[tti_index]} </span>(띠)입니다.`;
+
+        }
+            
+            // document.getElementById("result").innerHTML += `<br>10간은 "${gan_array[gan_index]}" 이며 <br>12지는 "${ji_array[ji_index]}" 입니다`; //innerHTML은 HTML 태그를 포함할 수 있다
+            
+            
+            document.getElementById("result").innerHTML=
+            document.getElementById("result").innerHTML + 
+            `<br>10간은 "${gan_array[gan_index]}" 이며 <br>12지는 "${ji_array[ji_index]}" 입니다`; //innerHTML은 HTML 태그를 포함할 수 있다
+           
+
+        
+        
+
+    </script>
+</head>
+<body>
+    출생년도:<input id="year">
+    <input type="button" value="결과보기" onclick="fn_result();">
+    <hr>
+    <div id="result"></div>
+    <span style="color: blue;background-color: white;"></span>
+</body>
+</html>
