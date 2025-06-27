@@ -10,12 +10,7 @@
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
    
-   <script src="/js/jumin.js">
-
-
-
-
-   </script> 
+   <script src="/js/jumin.js"></script> 
 
    <style>
        #box{
@@ -48,23 +43,38 @@
            //객체명  =   객체 (object)
            const jumin= new Jumin(jumin_no);
 
+           if(jumin.isValid3() == false){
+            alert("유효하지 않은 주민번호입니다")
+               // return;
+
+           }
+
            let year = jumin.getYear();
+           let ganji = jumin.getGanji();
            let age = jumin.getAge();
            let tti = jumin.getTti();
-         //   console.log(jumin.getTti());
+           let gender = jumin.getGender();
+           let season = jumin.getSeason();
+           let local =jumin.getLocal();
+
+
+
+           console.log(jumin.getGanji());
 
 
 
            //결과 출력
-           document.getElementById("year").innerHTML = year + "(기묘년)";
+           document.getElementById("year").innerHTML = `${year}(${ganji})`//year + "(기묘년)";
            document.getElementById("age").innerHTML = age + "(세)";
            document.getElementById("tti").innerHTML = tti + "(띠)";
            document.getElementById("gender").innerHTML = gender ;
-           document.getElementById("local").innerHTML = local;
            document.getElementById("season").innerHTML = season ;
+           document.getElementById("local").innerHTML = local;
 
 
        }
+
+      // alert(Number.isInteger('aaa'));
 
    </script>
 
@@ -78,7 +88,7 @@
                                placeholder="xxxxxx-xxxxxxx"
                                value="991212-1234560">
 
-                        <input type="button" class="btn btn-primary" onclick="fn_result();" value="결과보기">
+                        <input type="button" class="btn btn-primary" onclick="fn_result(jumin_no);" value="결과보기">
             </div>        
             <hr>
             <table class="table">

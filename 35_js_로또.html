@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        *{
+            margin: 0;
+            padding : 0;
+        }
+
+        .win-no{
+           display: inline-block;
+           width: 50px;
+           height: 50px;
+           background-color: rgb(10, 242, 246);
+           color:white;
+           font-size: 30px;
+           font-weight: bold;
+           text-align: center;
+           border-radius: 50px;
+        
+        }
+
+        .bonus{
+            background-color: darkslategrey;
+            color:gold ;
+        }
+
+        input[type='button']{
+            width: 100%;
+        }
+        #box{
+            width: 379px;
+            margin:auto;
+            text-align: center;
+        }
+      
+    </style>
+    <script src="./js/lotto.js"></script>
+
+    <script>
+        const lotto = new Lotto();
+
+        function fn_result(){
+
+            const win_no =lotto.getWinNum();//[12,16,19,222,34,44,7];
+
+            const span_win_no_array =document.getElementsByClassName("win-no");
+
+            for(let i=0; i< span_win_no_array.length; i++){
+                    span_win_no_array[i].innerHTML = win_no[i];
+
+            }
+
+        }
+        // console.log(Math.floor(Math.random()*45))+1;
+        </script>
+</head>
+<body>
+<div id="box">
+    <div>
+        <span class="win-no">1</span>
+        <span class="win-no">2</span>
+        <span class="win-no">3</span>
+        <span class="win-no">4</span>
+        <span class="win-no">5</span>
+        <span class="win-no">6</span>
+        <span class="win-no bonus">7</span>
+    </div>
+    <div>
+        <input type="button" value="로또추첨하기" onclick="fn_result();">
+    </div>
+</div>        
+</body>
+</html>

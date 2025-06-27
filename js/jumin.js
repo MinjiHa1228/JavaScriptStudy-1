@@ -60,61 +60,263 @@ class Jumin {
         let current_year = today.getFullYear();
 
         //나이 = 현재년도 - 출생년도
-    
+
         return current_year - year;
 
     }
 
     getGender() {
-
+        //짝수면
+        let gender = (this.jumin_no).substring(7, 8);
+        console.log(gender);
+        if (gender % 2 == 0) return "여자";
         return "남자";
     }
 
     // 12지
     // 4  5  6  7  8 9 10 11  0  1  2  3 <= 출생년도 ()%12
     // 자 축 인 묘 진 사 오 미 신 유 술 해
-    
+
     getTti() {
         let tti;
-        switch(this.getYear()%12){
+        switch (this.getYear() % 12) {
             case 0: return "원숭이"
 
-            case 1: tti ="닭" ; break;
-            case 2: tti ="개";  break;
-            case 3: tti ="돼지"; break;
-            case 4: tti ="쥐"; break;
-            case 5:  tti ="소"; break;
-            case 6:  tti ="호랑이"; break;
-            case 7:  tti ="토끼"; break;
-            case 8: tti ="용"; break;
-            case 9:  tti ="뱀"; break;
-            case 10:  tti ="말"; break;
-            case 11:  tti ="양";break;
+            case 1: tti = "닭"; break;
+            case 2: tti = "개"; break;
+            case 3: tti = "돼지"; break;
+            case 4: tti = "쥐"; break;
+            case 5: tti = "소"; break;
+            case 6: tti = "호랑이"; break;
+            case 7: tti = "토끼"; break;
+            case 8: tti = "용"; break;
+            case 9: tti = "뱀"; break;
+            case 10: tti = "말"; break;
+            case 11: tti = "양"; break;
         }
-     
-       console.log(tti);
-         return tti;
-    
-}
-    
-    getLocal() {
 
-        return "제주";
+        return tti;
+
     }
 
+    getLocal() {
+
+        let local = parseInt(this.jumin_no.substring(8, 10));
+
+        if (local >= 0 && local <= 8) return "서울특별시";
+        if (local >= 9 && 12 >= local) return "부산광역시";
+        if (local >= 13 && 15 >= local) return "인천광역시";
+        if (local >= 16 && 25 >= local) return "경기도";
+        if (local >= 26 && 34 >= local) return "강원도";
+        if (local >= 35 && 39 >= local) return "충청북도";
+        if (local >= 40 && 41 >= local) return "대전광역시";
+        if (local == 44 || 96 == local) return "세종특별자치시";
+        if (local >= 42 && 47 >= local) return "충청남도";
+        if (local >= 48 && 54 >= local) return "전라북도";
+        if (local >= 55 && 56 >= local) return "광주광역시";
+        if (local >= 55 && 64 >= local) return "전라남도";
+        if (local >= 65 && 66 >= local) return "광주광역시";
+        if (local >= 67 && 69 >= local) return "대구광역시";
+        if (local >= 70 && 81 >= local) return "경상북도";
+        if (local == 85 || local == 90) return "울산광역시";
+        if (local >= 82 && 91 >= local) return "경상남도";
+
+        if (local >= 92 && 95 >= local) return "제주특별자치도";
+
+
+        return "제주";
+
+
+
+
+    }
+
+    //                01234567890123  <- index
+    //this.jumin_no ="991212-1234567"
+
+
     getSeason() {
+        // 2<=month<4
+        let month = parseInt(this.jumin_no.substring(2, 4));
+
+        //방법1)
+        //     if(month>=3 && month <=5)return "봄";
+        //     else if(month>=6 && month <=9)return "여름";
+        //     else if(month>=9 && month <=11)return "가을";
+
+        //     return "겨울";
+        // }
+
+        //방법2) switch
+        //     switch(month)
+        //    {
+        //             case 3 :
+        //             case 4 :
+        //             case 5 :  return "봄";
+        //             case 6 :
+        //             case 7 :
+        //             case 8 :   return "여름";
+        //             case 9 :
+        //             case 10 :
+        //             case 11 :  return "가을";
+
+        //    }
+
+        //       return "겨울";
+        //방법3)
+        switch (Math.floor(month / 3)) {
+            case 1: return "봄";
+            case 2: return "여름";
+            case 3: return "가을";
+        }
 
         return "겨울";
     }
-    getGanji() {
 
-        return "기묘년";
+    //10간
+    // 0  1 2  3  4 5  6  7  8 9   <= 년도%10(0~9)
+    // 경 신 임 계 갑 을 병 정 무 기 
+
+    getGanji() {
+        let year = this.getYear();
+        //1 2 3 45 6 7 8 9 <- index
+        let gan = "경신임계갑을병정무기".charAt(year % 10);
+        //   0 1 2 3456  78 91011 <- index
+        let ji = "신유술해자축인묘진사오미".charAt(year % 12);
+
+        console.log(ji);
+
+
+
+        return gan + ji + "년"; // `${gan}${ji}년`
+
     }
 
-}
+    //                01234567890123  <- index
+    //this.jumin_no ="991212-1234567"
+    //               234567 892345
+    //is XXXX : 맞냐?
+    
+    isValid() {
 
-// const Jumin = new Jumin("901212-1234567"); // Jumin 을 new 에서 다시 생성한다
-// let year    = Jumin.getYear();
-// let age     = Jumin.getAge();
-// let gender  = Jumin.getGender();
-// let tti  = Jumin.getTti();
+        let sum = 0;
+
+        sum = sum + parseInt(this.jumin_no.charAt(0)) * 2;
+        sum = sum + parseInt(this.jumin_no.charAt(1)) * 3;
+        sum = sum + parseInt(this.jumin_no.charAt(2)) * 4;
+        sum = sum + parseInt(this.jumin_no.charAt(3)) * 5;
+        sum = sum + parseInt(this.jumin_no.charAt(4)) * 6;
+        sum = sum + parseInt(this.jumin_no.charAt(5)) * 7;
+
+        sum = sum + parseInt(this.jumin_no.charAt(7)) * 8;
+        sum = sum + parseInt(this.jumin_no.charAt(8)) * 9;
+        sum = sum + parseInt(this.jumin_no.charAt(9)) * 2;
+        sum = sum + parseInt(this.jumin_no.charAt(10)) * 3;
+        sum = sum + parseInt(this.jumin_no.charAt(11)) * 4;
+        sum = sum + parseInt(this.jumin_no.charAt(12)) * 5;
+
+
+        // //checksum1
+        // sum = sum %11;
+        // sum =11-sum;
+        // let checksum = sum%10
+
+
+        //checksum2
+
+        let checksum = (11 - (sum % 11)) % 10;
+        console.log("checksum", checksum);
+
+
+        //주민번호의 마지막 값
+        let last_no = parseInt(this.jumin_no.charAt(13))
+
+        return (checksum == last_no);
+       
+    } //end : isValid()
+
+
+    // sum = sum + parseInt(this.jumin_no.charAt(0)) * 2;
+    // sum = sum + parseInt(this.jumin_no.charAt(1)) * 3;
+    // sum = sum + parseInt(this.jumin_no.charAt(2)) * 4;
+    // sum = sum + parseInt(this.jumin_no.charAt(3)) * 5;
+    // sum = sum + parseInt(this.jumin_no.charAt(4)) * 6;
+    // sum = sum + parseInt(this.jumin_no.charAt(5)) * 7;
+
+    // sum = sum + parseInt(this.jumin_no.charAt(7)) * 8;
+    // sum = sum + parseInt(this.jumin_no.charAt(8)) * 9;
+    // sum = sum + parseInt(this.jumin_no.charAt(9)) * 2;
+    // sum = sum + parseInt(this.jumin_no.charAt(10)) * 3;
+    // sum = sum + parseInt(this.jumin_no.charAt(11)) * 4;
+    // sum = sum + parseInt(this.jumin_no.charAt(12)) * 5;
+
+    isValid2() {
+        let sum = 0;
+        let su = 2;
+        for (let i = 0; i <= 12; i++) {
+            if (i == 6) continue; //다음 수 무시하고 계속해라 ->6 자리는 하이푼이니까
+            sum = sum + parseInt(this.jumin_no.charAt(i)) * su;
+            su++
+            if (su > 9) su = 2;
+        } // 반복되는 내용을 간략하게 만든 식
+
+
+        let checksum = (11 - (sum % 11)) % 10;
+        console.log("checksum", checksum);
+
+
+        //주민번호의 마지막 값
+        let last_no = parseInt(this.jumin_no.charAt(13))
+
+        return (checksum == last_no);
+
+
+
+
+    }// end:isValid2()
+
+
+    // sum = sum + parseInt(this.jumin_no.charAt(0)) * 2;
+    // sum = sum + parseInt(this.jumin_no.charAt(1)) * 3;
+    // sum = sum + parseInt(this.jumin_no.charAt(2)) * 4;
+    // sum = sum + parseInt(this.jumin_no.charAt(3)) * 5;
+    // sum = sum + parseInt(this.jumin_no.charAt(4)) * 6;
+    // sum = sum + parseInt(this.jumin_no.charAt(5)) * 7;
+
+    // sum = sum + parseInt(this.jumin_no.charAt(7)) * 8;
+    // sum = sum + parseInt(this.jumin_no.charAt(8)) * 9;
+    // sum = sum + parseInt(this.jumin_no.charAt(9)) * 2;
+    // sum = sum + parseInt(this.jumin_no.charAt(10)) * 3;
+    // sum = sum + parseInt(this.jumin_no.charAt(11)) * 4;
+    // sum = sum + parseInt(this.jumin_no.charAt(12)) * 5;
+
+    isValid3() {
+        let sum = 0;
+        //
+        let su_array = [2, 3, 4, 5, 6, 7, 0, 8, 9, 2, 3, 4, 5];
+
+        for (let i = 0; i <= 12; i++) {
+            if (i == 6) continue;
+            sum = sum + parseInt(this.jumin_no.charAt(i)) * su_array[i];
+        }
+
+
+        //     // //checksum1
+        //     // sum = sum %11;
+        //     // sum =11-sum;
+        //     // let checksum = sum%10
+
+
+        //     //checksum2
+
+        let checksum = (11 - (sum % 11)) % 10;
+        console.log("checksum", checksum);
+
+
+        //주민번호의 마지막 값
+        let last_no = parseInt(this.jumin_no.charAt(13))
+
+        return (checksum == last_no);
+
+    }
+}
