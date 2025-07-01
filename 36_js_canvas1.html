@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>캔버스</title>
+    <style>
+        * {
+            margin: 0;
+        }
+
+        canvas {
+
+            border: 1px solid blue;
+            margin: 30px;
+        }
+    </style>
+    <script>
+        let ctx = null;
+
+        let image1 =null;
+
+        //초기화 이벤트
+        window.onload = function () {
+
+
+            //그리는 Canvas 정보 구하기
+
+            const myCanvas = document.getElementById("myCanvas");
+
+            //그리기도구 구하기
+            ctx = myCanvas.getContext("2d");
+
+            
+            //텍스트출력
+
+            ctx.font ="30px 필기체";
+            //그림자
+            ctx.fillStyle = "black";
+            ctx.fillText("Canvas그리기연습",100+1,50+1);
+
+            ctx.fillStyle = "red";
+            ctx.fillText("Canvas그리기연습",100,50);
+
+            //테두리만 그리는 텍스트
+            ctx.strokeStyle="blue";
+            ctx.font ="20px 필기체";
+            ctx.strokeText("각종 도형 및 그림을 출력합니다.",100,120);
+
+
+            //사각형 그리기
+            ctx.fillStyle = "red"
+            ctx.fillRect(10,150,100,100);
+
+            ctx.strokeStyle = "blue"   
+            ctx.strokeRect(120,150,100,100);
+
+            //원그리기
+            //채워진원
+            ctx.beginPath();
+            ctx.arc(280,200,50,0,Math.PI*2,true);
+            ctx.fill();
+
+            //테두리만
+            ctx.beginPath();
+            ctx.arc(390,200,50,0,Math.PI*2,true);
+            ctx.stroke();
+
+            //이미지 출력하기
+            //이미지초기화
+            image1 = new Image();
+            image1.src = "./image/버섯.png";
+
+            image1.onload=function(){
+                // 원본이미지크기 : 617 x 648
+
+                ctx.drawImage(image1,10,250);
+
+                //축소해서 출력            원본이미지  출력위치(화면)
+                ctx.drawImage(image1,0,0,617,648, 650,500 ,300,300);
+
+            };
+
+        };
+
+
+    </script>
+</head>
+
+<body>
+
+    <canvas id="myCanvas" width="1000" height="1000
+    ">현재브라우져에서는 지원되지 않습니다.</canvas>
+
+</body>
+
+</html>

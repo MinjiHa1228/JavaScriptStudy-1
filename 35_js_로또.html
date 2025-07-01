@@ -25,6 +25,19 @@
         
         }
 
+
+        .user-no{
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            font-size: 30px;
+            font-weight: bold;
+            margin-right: 2px;
+            
+
+        }
+
+
         .bonus{
             background-color: darkslategrey;
             color:gold ;
@@ -43,6 +56,8 @@
     <script src="./js/lotto.js"></script>
 
     <script>
+
+        const regular_lotto_no =/^([1-9]{1}|[1-3]{1}[0-9]{1}|[4]{1}[0-5]{1})$/;
         const lotto = new Lotto();
 
         function fn_result(){
@@ -58,7 +73,65 @@
 
         }
         // console.log(Math.floor(Math.random()*45))+1;
+        function fn_result_user_no(){
+            const input_user_no_arry =document.getElementsByClassName("user-no");
+            const user_no = [];//빈배열
+            for (let i=0; i<input_user_no_arry.length;i++){
+
+                let no = input_user_no_arry[i].value;
+                if(regular_lotto_no.test(no)==false){
+                    alert("1~45의 숫자만 입력하세요 !");
+                    input_user_no_arry[i].value="";
+                    input_user_no_arry[i].focus();
+                    return;
+                }
+
+                //중복수 체크 : 배열안에 no 값이 포함되어 있나?
+                if(user_no.includes(no)){
+                    alert("이미값이 포함되어있습니다")
+                    input_user_no_arry[i].value="";
+                    input_user_no_arry[i].focus();
+                    return;
+
+
+
+                }
+
+                user_no.push(no);
+            }
+
+            
+            
+            //lotto객체의 user_no 입력된  user_no 넘겨준다.
+            lotto.user_no = user_no;
+
+            let result = lotto.checkRank();
+            //result {"rank":1 , "count":6 ,"bonus":0};  
+        let result_content="";
+        if(result.count<3){
+            result_content="꽝. 다음기회에";
+
+        }else{
+            result_content = `
+            등수: ${result.rank}<br>
+            맞은갯수: ${result.count}<br>
+            `;
+            
+            if(result.rank ==2){
+                result_content+=`보너스 :${result.bonus}`;
+            }
+            document.getElementById("result_user_no").innerHTML=result_content;
+        }
+        
+    }//end:for
+        
+
+
+        
+        
+        
         </script>
+
 </head>
 <body>
 <div id="box">
@@ -74,6 +147,29 @@
     <div>
         <input type="button" value="로또추첨하기" onclick="fn_result();">
     </div>
+
+        <hr>
+
+    <div>
+        <input class= "user-no" type=" text" value="1">
+        <input class= "user-no" type=" text" value="2">
+        <input class= "user-no" type=" text" value="3">
+        <input class= "user-no" type=" text" value="4">
+        <input class= "user-no" type=" text" value="5">
+        <input class= "user-no" type=" text" value="6">
+      
+       
+
+    </div>
+
+     <div>
+        <input type="button" value="당첨번호확인하기" onclick="fn_result_user_no();">
+    </div>
+
+    <div id ="result_user_no">추첨결과!</div>
+
+
+
 </div>        
 </body>
 </html>

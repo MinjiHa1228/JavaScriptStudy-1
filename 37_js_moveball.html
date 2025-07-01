@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+        }
+
+        #myCanvas {
+            border: 1px solid blue;
+        }
+    </style>
+
+    <script>
+        
+        const GAMEPAN_WIDTH  = 600;
+        const GAMEPAN_HEIGHT = 400;
+
+        let ctx = null;
+        let timer = null;
+
+        //공의 좌표정보
+        let ball_x = GAMEPAN_WIDTH  / 2;
+        let ball_y = GAMEPAN_HEIGHT / 2;
+        let ball_radius = 20;
+        let ball_color="red";
+
+        //공의 방향
+        let bRight = true; //좌우
+        let bDown  = true; //상하
+        const move_gan = 2;
+        
+
+        //Callback함수 : 자동호출되는 함수(Event함수)
+        window.onload = function () {
+
+            const myCanvas = document.getElementById("myCanvas");
+            ctx = myCanvas.getContext("2d");
+
+            //사용자 함수
+            startTimer();
+        };
+
+
+        //키보드 이벤트
+        window.onkeydown = function(event){
+            console.log(event.code);
+
+            if(event.code == "KeyS"){
+                startTimer();
+            }
+
+            if(event.code == "KeyX"){
+                stopTimer();
+            }
+
+            //방향제어
+            switch(event.code)
+            {
+                case "ArrowRight": bRight=true;  break;
+                case "ArrowLeft" : bRight=false; break;
+                case "ArrowUp"   : bDown=false;  break;
+                case "ArrowDown" : bDown=true;   break;
+            }
+
+            //크기제어
+            if(event.code=="NumpadAdd" || event.code=="Equal") {
+                ball_radius++;
+                if(ball_radius > GAMEPAN_HEIGHT/2){
+                    ball_radius=GAMEPAN_HEIGHT/2;
+                }
+            }
+
+            if(event.code=="NumpadSubtract" || event.code=="Minus") {
+                ball_radius--;
+                if(ball_radius <5){
+                    ball_radius=5;
+                }
+            }
+
+            //색상제어
+            switch(event.code)
+            {
+                case "KeyR": ball_color="red";break;
+                case "KeyG": ball_color="green";break;
+                case "KeyB": ball_color="blue";break;
+                case "KeyY": ball_color="yellow";break;
+            }
+
+            
+
+
+
+
+
+        };
+
+
+
+
+        function startTimer() {
+            if (timer == null) {
+                // 100 :  초당10회   10FPS(Frame Per Second)
+                // 10  :  초당100회  100FPS(Frame Per Second)
+                timer = setInterval(timerProc, 10);
+            }
+        }
+
+        function stopTimer() {
+            clearInterval(timer);
+            timer = null;
+        }
+
+        function timerProc() {
+            move_ball();//공의 위치 이동
+
+            //이전화면 지우기
+            ctx.clearRect(0,0,GAMEPAN_WIDTH,GAMEPAN_HEIGHT);
+
+            draw_ball();//공 그리기
+        }
+
+        
+        function move_ball() {
+
+            //좌우 이동
+            if(bRight)
+                ball_x += move_gan;
+            else
+                ball_x -= move_gan;
+            
+            //상하 이동
+            if(bDown)
+                ball_y += move_gan;
+            else
+                ball_y -= move_gan;
+
+            //우측벽에 닿았냐?
+            if( (ball_x + ball_radius) > GAMEPAN_WIDTH ){
+                bRight=false;
+            }
+
+            //왼쪽벽에 닿았냐?
+            if( (ball_x - ball_radius)<0){
+                bRight=true;
+            }
+
+            //아래쪽벽
+            if( (ball_y + ball_radius) > GAMEPAN_HEIGHT ){
+                bDown=false;
+            }
+
+            //윗쪽벽
+            if((ball_y-ball_radius)<0){
+                bDown = true;
+            }
+
+
+        }
+
+        function draw_ball() {
+            // 10 -> ball_radius/2
+            let radgrad = ctx.createRadialGradient(ball_x-ball_radius/2, 
+                                                   ball_y-ball_radius/2, 
+                                                   0 , 
+                                                   ball_x-ball_radius/2, 
+                                                   ball_y-ball_radius/2, 
+                                                   ball_radius*1.5);
+            radgrad.addColorStop(0, 'white');
+            radgrad.addColorStop(1, ball_color);
+
+            ctx.fillStyle = radgrad;
+            
+            ctx.beginPath();
+
+            ctx.arc(ball_x, ball_y, ball_radius, 0, Math.PI * 2, true);
+           
+            ctx.fill();
+
+
+        }
+
+
+    </script>
+
+</head>
+
+<body>
+    <canvas id="myCanvas" width="600" height="400">지원하지 않습니다</canvas>
+
+    <div>
+        시작 : S<br>
+        정지 : X<br>
+        방향전환: 방향키버튼<br>
+        공의크기 크게 : +(NumpadAdd)      or =(Equal)<br>
+        공의크기 작게 : -(NumpadSubtract) or -(Minus)<br>
+        공의 색상변경 : R(red) G(green) B(blue) Y(yellow)<br> 
+    </div>
+</body>
+
+</html>
