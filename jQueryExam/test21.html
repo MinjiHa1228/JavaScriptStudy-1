@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style type="text/css">
+		#menubar {
+			width: 1000px;
+
+			/* z-index적용되려면 position:static이 아니어야함 */
+			position: relative;
+			z-index: 1000;
+		}
+
+		li.mainmenu {
+			float: left;
+			width: 300px;
+			list-style-type: none;
+			margin-left: 20px;
+			
+			
+		}
+
+		li.mainmenu ul {
+			margin: 0px;
+			list-style-type: none;
+			padding: 0px;
+
+		}
+
+		.mainmenu a {
+			background: #a50000;
+			width: 300px;
+			display: block;
+			color: white;
+			text-decoration: none;
+			padding: 10px;
+			border-bottom: 1px solid #ffffff;
+
+		}
+
+		ul#dropdownmenu li a:hover {
+			background-color: #aaaaaa;
+		}
+
+		#disp {
+			width: 940px;
+			min-height: 500px;
+			background-color: beige;
+			color: blue;
+			position: absolute;
+
+			top: 60px;
+			left: 80px;
+			clear: both;
+
+			/* z-index: -1; */
+
+		}
+	</style>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script type="text/javascript">
+
+		$(document).ready(function () {
+
+			$("li.mainmenu ul").hide(); //하위메뉴 숨기기
+
+			//                      올라갔을때  내려갔을때
+			//$("li.mainmenu").hover(function(){},function(){});
+
+			$("li.mainmenu").hover(function () {
+				// 자신의 자식요소중에 ul요소 화면에 보이기
+				//$(child,parent).show();
+				$("ul", this).show(1);
+				//$("ul",this).slideDown(500);
+				//$("ul",this).fadeIn(1000);
+			}, function () {
+				$("ul", this).hide(1);
+			});
+
+		});//end:ready()
+
+		function answer(question) {
+
+			if (question == "java") {
+				alert("Java란 제임스 고슬링이 만든 프로그램 언어!!");
+				return;
+			}
+
+			if (question == "java_money") {
+				alert("열공하면 돈이 됩니다...");
+				return;
+			}
+		}//end:answer()
+
+		function description(subject) {
+
+			if (subject == "html_css") {
+				let html = `<h2>Html/CSS</h2>&nbsp;&nbsp;&nbsp;<h3>AAAA</h3>`;
+				html += `
+				           <dl>
+								<dt>Html이란?</dt>
+								<dd>
+									HyperText Markup Language약자로 웹개발에서 사용되는 프로그램 언어
+								</dd>
+								<dt>CSS란?</dt>
+								<dd>
+									Cacading StyleSheets의 약자로 스타일 지정하는 언어
+								</dd>
+							</dl>
+				        `;
+
+				$("#disp").html(html);
+			}else if(subject=='javascript'){
+				let html = "<h2>Javascript</h2>";
+				html += 
+				       `
+				           <dl>
+								<dt>Javascript란?</dt>
+								<dd>
+									Browser를 제어하는 언어로 HTML DOM/Event등을 제어한다.
+								</dd>
+								
+							</dl>
+				       `;
+				$("#disp").html(html);	   
+			}
+
+
+		}//end:description()
+
+
+
+	</script>
+</head>
+
+<body>
+
+
+
+	<div id="menubar">
+		<ul id="dropdownmenu">
+			<li class="mainmenu">
+				<a href="#">도서</a>
+				<ul>
+					<li>
+						<a href="#" onclick="answer('java');">JAVA가 먼가요? 먹는건가요?</a>
+					</li>
+					<li>
+						<a href="#" onclick="answer('java_money');">배우면 돈이되는 자바</a>
+					</li>
+					<li>
+						<a href="#">손에 잡히는 자바</a>
+					</li>
+				</ul>
+			</li>
+			<li class="mainmenu">
+				<a href="#">화장품</a>
+				<ul>
+					<li><a href="#">SK-II</a></li>
+					<li><a href="#">아리따움</a></li>
+					<li><a href="#">설화수</a></li>
+				</ul>
+			</li>
+			<li class="mainmenu">
+				<a href="#">풀스택과목</a>
+				<ul>
+					<li><a href="#" onclick="description('html_css');">HTML/CSS</a></li>
+					<li><a href="#" onclick="description('javascript');">Javascript</a></li>
+					<li><a href="#">Java</a></li>
+					<li><a href="#">DB(Oracle/Mysql)</a></li>
+					<li><a href="#">Servlet/JSP</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	<!-- end: menubar -->
+	<div id="disp"></div>
+
+</body>
+
+</html>
