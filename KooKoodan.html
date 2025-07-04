@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>구구단</title>
+    <script>
+       
+
+function num(){
+(document.getElementById("number").value)
+
+        let number; //저장되는 변수
+        number =(document.getElementById("number").value)  
+       
+        let result ;
+        result=(number*1);
+
+        kookoo =`${number}*1=${result}`;
+    
+        (document.getElementById("result").innerHTML)=koo;
+}
+
+
+    </script>
+
+</head>
+<body>
+    <div>구구단</div>
+    <div id="result">구구단 숫자 받아오기</div>
+    <input id="number" type="text">
+    <button onclick="num()">눌러</button>
+</body>
+</html>
+
+

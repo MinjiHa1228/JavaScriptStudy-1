@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <jQuery CDN(content Delivery library)> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+     
+
+        //초기화 함수
+        window.onload = function () {
+            console.log("window.onloadcall");
+        };
+
+        //jQuery 초기화 함수
+        jQuery(document).ready(function () {
+            console.log("jQuery(document).ready()call");
+
+
+        });
+
+        //jQuery -> $
+
+        $(document).ready(function () {  //doc 이 ready 되면 호출할꺼야
+            console.log("$(document).ready()call");
+
+        });
+
+        //초기화함수 축약형태
+        $(function () {
+            console.log("$(functoin(){}) call")
+        });
+
+
+
+
+
+    </script>
+
+</head>
+
+<body>
+123
+</body>
+
+</html>

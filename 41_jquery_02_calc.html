@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- jQuery CDN(Content Delivery Network) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- <체크하는 함수 들어 있음> -->
+    <script src ="./js/checksharp.js"></script>
+
+    <script>
+
+        //초기화함수
+        $(document).ready(function () {
+            //$(selector).action()
+            //document.getElementById("btn_add").value="+";
+            $("#btn_add").click(function () {
+                //alert("더하기 호출");
+                calc("+");
+            });//end:$("#btn_add")
+
+            $("#btn_minus").click(function () {
+                calc("-");
+            });//end:$("#btn_minus")
+
+            $("#btn_multiply").click(function () {
+                calc("-");
+            });//end:$("#btn_minus")
+            $("#btn_exponent").click(function () {
+                calc("-");
+            });//end:$("#btn_minus")
+
+            $("#btn_divide").click(function () {
+                calc('/');
+            });//end:$("#btn_divide")
+
+            $("#btn_remain").click(function () {
+                calc('%');
+            });//end:$("#btn_remain")
+
+        });
+        //------------------------------------------------
+        function calc(op) {
+            //operator(연산자) : + - * ** / %
+            //입력된 2수을 얻어온다
+            //let su1 = document.getElementById("su1").value;
+            let su1 = $("#su1").val(); // val()->value
+            let su2 = $("#su2").val(); // val()->value
+
+            //정규식 유효성 체크(정수(소숫점이 없는수) 또는 실수(소숫점이 있는수))
+
+
+            // // 나누기(/) 나머지(%) 연산시 젯수(su2)가 0인값 체크
+            document.getElementById("error_msg").innerHTML = "";
+            // <span id="error_msg">여기 넣겠다</span>
+            $("error_msg").html("");
+            if (op == '/' || op == '%') {
+                if (su2 == 0) {
+                    // document.getElementById("error_msg").style.color = "red";
+                      $("error_msg").css("color","red");
+                    // document.getElementById("error_msg").innerHTML = "0으로 나눌수 없습니다";
+                     $("error_msg").html("0으로 나눌 수 없습니다");
+                    return;
+                }
+            }
+
+
+            let result = 0;
+            switch (op) {
+                case "+": result = Number(su1) + Number(su2); break;
+                case "-": result = su1 - su2; break;
+                case "/": result = su1 / su2; break;
+                case "%": result = su1 % su2; break;
+            }
+
+            //document.getElementById("result").value = result;
+            $("#result").val(result); //값 넣기
+
+
+        }
+
+    </script>
+
+
+</head>
+
+<body>
+    수1:<input id="su1" value=""><br>
+    수2:<input id="su2"><br>
+    <span id="error_msg"style="color:red;" ></span>
+    <hr>
+    <input type="button" value="더하기" id="btn_add">
+    <input type="button" value="빼기" id="btn_minus">
+    <input type="button" value="곱하기" id="btn_multiply">
+    <input type="button" value="제곱승" id="btn_exponent">
+    <input type="button" value="나누기" id="btn_divide">
+    <input type="button" value="나머지" id="btn_remain">
+    <hr>
+    결과:<input id="result"><br>
+
+
+
+</body>
+
+</html>
