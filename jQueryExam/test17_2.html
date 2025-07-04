@@ -6,9 +6,9 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script type="text/javascript">
 	const news = [
-	            "1 박지성 김민지 결혼",  //0
-	            "2 미래의 선택 정용화",  //1
-	            "3 김미려 눈물",         //2
+	            "1 졸려 죽겠네 ",  //0
+	            "2 잠깨라 잠!",  //1
+	            "3 선생님 너무 졸려여",         //2
 	            "4 한국인 10명 연락두절",//3
 	            "5 은혁 트위터 해킹"     //4
 	           ];
@@ -34,7 +34,7 @@
 	function startNews(){
 		// 1초마다 한번씩 showNews()를 실행
 		if(timer==null)
-		   timer = setInterval(showNews,1000);
+		   timer = setInterval(showNews,500);
 		
 		//<=2초후에 1회만 호출
 		//timer = setTimeout(showNews,2000); 
@@ -68,5 +68,5 @@
 	<input type="button" id="btn_start" value="뉴스보기"/>
 	<input type="button" id="btn_stop"  value="뉴스중지"/>
 	
-</body>
-</html>
+
+	</html>

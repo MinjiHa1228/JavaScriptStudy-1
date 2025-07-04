@@ -29,13 +29,7 @@
 			// 1.맵(Map) 방식
 			//$(selector).css(JSON형식);
 			$("#box1").css(
-						{
-							//key   : value
-							"color" : "red",
-							"background" : "green",
-							"width" : "200px",
-							"height" : "200px"
-						}
+						
 					);
 			// 2. method chainning
 			// $("#box1").css("color","red")
@@ -66,7 +60,7 @@
 			// w = '200px' + 50
 			w = w.replace('px','');//px제거
 			//  "200" + 50 -> "20050"
-			w = parseInt(w) + 50;//정수변환+50
+			w = parseInt(w) + 60;//정수변환+50
 			//alert(w);
 			$("#box1").css("width",w +'px');
 			
@@ -75,7 +69,7 @@
 		// 4번 버튼을 누르면 box1의 클래스를
 		// myClass로 추가시키고 
 		$("#btn4").click(function(){
-			$("#box1").addClass("myClass");
+			$("#box1").addClass("myClass");gdd
 		});
 		
 		// 5번 버튼 누르면 removeClass
@@ -111,6 +105,11 @@
 </script>
 </head>
 <body>
+	<Btn>
+		jofg
+
+		ttufo
+	</Btn>
 	<input type="button" value="btn1" id="btn1" />
 	<input type="button" value="btn2" id="btn2" />
 	<input type="button" value="btn3" id="btn3" />

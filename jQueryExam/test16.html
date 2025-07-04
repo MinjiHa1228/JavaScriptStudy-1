@@ -36,7 +36,13 @@
 		function clearInputValue(){
 			//<input value="">
 			$("input#userId[type='text']").val("");
+			
+			// CSS or jQuery Selector
+			// $("#username[type='text']).val("");		
+			// jQuery Selector(CSS) css 와 혼용 안됨
+
 			$("#username:text").val("");
+
 			$("#pwd:password").val("");
 			$("#repwd:password").val("");
 
@@ -48,15 +54,16 @@
 		function invalidation(){
 			// 아이디를 입력하지 않으면 
 			// 해당 span에 아이디를 입력하세요 
-			//라믄 문구 추가 
+			//라는 문구 추가 
 			if($("#userId:text").val()==""){
 				// id를 빼고 실행하면  &nbsp;
+				// $("#idValid").text()or($("#idValid").html()
 				if($("#idValid").text()==""){//경고메시지가 비어있으면
 					$("#idValid").html("아이디를 입력하세요").addClass("warning");
 				//.append("아이디를 입력하세요")
 				//.addClass("warning");
 				}
-				return false;
+				// return false;
 			}else{
 				$("#idValid").html("").removeClass("warning");
 			}
@@ -67,7 +74,8 @@
 				if($("#nameValid").text()==""){
 					$("#nameValid").html("이름을 입력하세요").addClass("warning");
 				}
-				return false;
+				// return false;
+				//경고메세지 제거
 			}else{
 				$("#nameValid").html("").removeClass("warning");
 			}
@@ -78,7 +86,7 @@
 					$("#pwdValid").html("비밀번호를 입력하세요").addClass("warning");
 				
 				}
-				return;
+				// return;
 			}else{
 				$("#pwdValid").html("").removeClass("warning");
 			}
@@ -89,7 +97,7 @@
 					$("#repwdValid").html("비밀번호(확인)를 입력하세요").addClass("warning");
 				
 				}
-				return;
+				// return;
 			}else{
 				$("#repwdValid").html("").removeClass("warning");
 			}
