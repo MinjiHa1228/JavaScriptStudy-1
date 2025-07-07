@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- jQuery CDN(Content Delivery Network) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <script src="./js/checksharp.js"></script>
+
+    <script>
+$(document).ready(function(){
+//전체선택 이벤트
+
+("#checkAll").click(function(){
+ let bChecked = $(this).prop("checked");
+ console.log(bChecked);
+ if (bChecked){
+    $("input[name='food']").prop("checked",true);
+ }else{
+    $("input[name='food']").prop("checked",false);
+ }
+
+});
+
+
+
+$("input[name='food']").click(function(){
+    let total_count=$("input[name='food']:checked").length;
+
+
+
+
+
+
+
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+})
+
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

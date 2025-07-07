@@ -18,8 +18,8 @@
 			width: 300px;
 			list-style-type: none;
 			margin-left: 20px;
-			
-			
+
+
 		}
 
 		li.mainmenu ul {
@@ -79,7 +79,7 @@
 				$("ul", this).hide(1);
 			});
 
-		});//end:ready()
+		});//end:ready()?
 
 		function answer(question) {
 
@@ -98,7 +98,7 @@
 
 			if (subject == "html_css") {
 				let html = `<h2>Html/CSS</h2>&nbsp;&nbsp;&nbsp;<h3>AAAA</h3>`;
-				html += `
+				html =html + `
 				           <dl>
 								<dt>Html이란?</dt>
 								<dd>
@@ -112,10 +112,10 @@
 				        `;
 
 				$("#disp").html(html);
-			}else if(subject=='javascript'){
+			} else if (subject == 'javascript') {
 				let html = "<h2>Javascript</h2>";
-				html += 
-				       `
+				html +=
+					`
 				           <dl>
 								<dt>Javascript란?</dt>
 								<dd>
@@ -124,20 +124,51 @@
 								
 							</dl>
 				       `;
-				$("#disp").html(html);	   
+				$("#disp").html(html);
 			}
 
 
 		}//end:description()
 
+		function info(x) {
+			console.log(x);
+			if (x == "sk-2") {
+				let html = `
+	<h2>sk-2</h2>
+	<dl>
+		<dt>
+
+			SK-II 화장품은?
+		</dt>
+
+		<dd>수출가능한화장품 입니다</dd>
+	</dl>
+
+
+				
+				
+				`;
+
+			}
+
+			if (x == "아리따움") {
+
+			}
+			if (x == "설화수") {
+
+			}
+
+
+
+			//$("#disp").html(html);
+			$("#disp").html(html);
+		};
 
 
 	</script>
 </head>
 
 <body>
-
-
 
 	<div id="menubar">
 		<ul id="dropdownmenu">
@@ -158,9 +189,11 @@
 			<li class="mainmenu">
 				<a href="#">화장품</a>
 				<ul>
-					<li><a href="#">SK-II</a></li>
-					<li><a href="#">아리따움</a></li>
-					<li><a href="#">설화수</a></li>
+
+					<li><a href="#" onclick="info('sk-2');">SK-II</a></li>
+					<li><a href="#" onclick="info('아리따움');">아리따움</a></li>
+					<li><a href="#" onclick="info('설화수');">SK-II</a></li>
+
 				</ul>
 			</li>
 			<li class="mainmenu">
@@ -168,7 +201,7 @@
 				<ul>
 					<li><a href="#" onclick="description('html_css');">HTML/CSS</a></li>
 					<li><a href="#" onclick="description('javascript');">Javascript</a></li>
-					<li><a href="#">Java</a></li>
+					<li><a href="Javascript:description('java')"></a></li>
 					<li><a href="#">DB(Oracle/Mysql)</a></li>
 					<li><a href="#">Servlet/JSP</a></li>
 				</ul>

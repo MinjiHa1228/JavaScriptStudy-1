@@ -70,10 +70,7 @@
                 return;
             }
 
-
-
-            //이름/나이/전화 입력값 구하기
-  let name = $("#name").val().trim();//공백제거
+            let name = $("#name").val().trim();//공백제거
             let age  = $("#age").val();
             let tel  = $("#tel").val();
 
@@ -101,42 +98,29 @@
                 $("#tel").focus();
                 return;
             }
-
-
-            //현재 입력된 값을 JSON으로 생성
-            const person = {"name": name, "age":age, "tel":tel};
-
-
-              if(confirm("정말 수정하시겠습니까?")==false)return;
-
-            alert(global_index + "인덱스 뎅이터 수정");
             
-            //배열에 추가
-            person_array[global_index]=person;
-           
+            if(confirm("정말 수정하시겠습니까?")==false)return;
+
+            //수정 방법1
+            // person_array[global_index].name = name;
+            // person_array[global_index].age  = age;
+            // person_array[global_index].tel  = tel;
+
+            //수정 방법2
+            const p = {"name":name, "age":age, "tel":tel};
+
+            //global_index 위치의 데이터 1개 삭제된 후 p Data가 삽입
+            person_array.splice(global_index,1,p);
 
 
-
-            //데이터 조회(갱신)
+            //수정내용 출력
             person_display();
 
-            //입력창 비우기
+            //수정창 지우기
             clear_person();
+            global_index = -1;
 
-
-          
             
-
-
-          
-
-
-
-
-
-
-
-
         }
         //--------------------------------------------
        

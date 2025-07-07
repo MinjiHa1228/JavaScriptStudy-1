@@ -33,22 +33,21 @@
 			$("#img1").animate({margin:0,width:300,height:400},1000);
 		});
 
-		
+		//image2x
 		$("#btn3").click(function(){
-			var w = 
-				parseInt($("#img1").css("width"))*2;
-			var h = 
-				parseInt($("#img1").css("height"))*2;
+			//현재크기 구하기 *2
+			var w = parseInt($("#img1").css("width"))*2;
+			var h = parseInt($("#img1").css("height"))*2;
 			
 			/* $("#img1").css("width",w)
 					.css("height",h); */
 				$("#img1").animate({width:w,height:h},1000);		
 		});
+
+		//현재크기 * 1/2
 		$("#btn4").click(function(){
-			var w = 
-				parseInt($("#img1").css("width"))*1/2;
-			var h = 
-				parseInt($("#img1").css("height"))*1/2;
+			var w = parseInt($("#img1").css("width"))*1/2;
+			var h = parseInt($("#img1").css("height"))*1/2;
 			
 			/* $("#img1").css("width",w)
 					     .css("height",h); */
